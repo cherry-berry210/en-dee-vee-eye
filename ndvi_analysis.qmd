@@ -384,8 +384,9 @@ caic_data <- data.frame(models = models_list, cAIC = caic)
 caic_data$models <- factor(caic_data$models, levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"))
 
 lmer_plot <- ggplot(caic_data, aes(x = models, y = cAIC)) +
-  geom_bar(stat = "identity", fill = "chocolate", width = 0.5) +
-  geom_text(aes(label = cAIC), vjust = -0.5, size = 3)
+  geom_bar(stat = "identity", fill = "cornflowerblue", width = 0.5) +
+  geom_text(aes(label = cAIC), vjust = -0.5, size = 3) +
+  labs(x = "Model Iteration", y = "cAIC Value")
 
 lmer_plot
 
@@ -427,4 +428,4 @@ glm_plot
   
 ```
 
-In my completely professional opinion, it seems that the total \# of stems decreases slightly as NDVI increases because of the transect proximity to water. Values around 0.05 to 0.2 usually indicate bare ground, while -1 to 0 usually correspond to sandy areas.
+In my completely professional opinion, it seems that the total \# of stems decreases slightly as NDVI increases because of the transect proximity to water. Values around 0.05 to 0.2 usually indicate bare ground, while -.1 to 0 usually correspond to sandy areas.
