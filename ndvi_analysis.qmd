@@ -1,0 +1,430 @@
+---
+title: "ndvi"
+format: html
+editor: visual
+---
+
+# NDVI Stuff
+
+Step Overview:
+
+1.  Download raster data
+
+    a.  NAIP "year_c" files
+    b.  elevation data
+    c.  SCWRP vegetation data
+
+2.  Conduct NDVI analysis ((band_4 - band_3)/(band_4 + band_3)) (it might be flipped)
+
+3.  Add NDVI values to vegetation dataframe
+
+4.  Run a correlation analysis
+
+    a.  %cover \~ NDVI, veg_height \~ NDVI
+
+# HeadR (get it)
+
+Load packages 😏
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(scales)
+library(sjPlot)
+library(lmerTest)
+library(grateful)
+```
+
+Import excel sheet
+
+```{r}
+cord_data <- read_excel("cordgrass_tings.xlsx")
+```
+
+Get data ready for analysis (wash your hands, get a drink, grab a plate etc.)
+
+```{r}
+cord_data <- cord_data |>
+  mutate(pct_cover = ((VegetatedCover/100) * (EstimatedCover))) |>
+  mutate(Station = as.character(Station))
+
+cord_data
+```
+
+### graphs for brownie points
+
+```{r}
+ggplot(cord_data) +
+  aes(NDVI, VegetatedCover, colour = Tide) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+
+ggplot(cord_data) +
+  aes(NDVI, TallestPlantHeight, colour = Station) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+```
+
+## My data is sooooo normal (spoiler alert: NOT)
+
+```{r}
+cord_model1 <- lm(pct_cover ~ NDVI, data = cord_data)
+cord_model2 <- aov(pct_cover ~ NDVI, data = cord_data)
+
+residuals_1 <- residuals(cord_model2)
+
+#normie test
+shapiro.test(residuals_1)
+
+
+plot(cord_model1, which = 1)
+plot(cord_model1, which = 2)
+```
+
+### why cant you be normal
+
+```{r}
+cord_model3 <- lm(TallestPlantHeight ~ NDVI, data = cord_data)
+cord_model4 <- aov(TallestPlantHeight ~ NDVI, data = cord_data)
+
+residuals_2 <- residuals(cord_model4)
+
+#normie test
+shapiro.test(residuals_2)
+
+plot(cord_model3, which = 1)
+plot(cord_model3, which = 2)
+
+anova(cord_model1)
+anova(cord_model3)
+```
+
+\########################################################################
+
+# This is where the fun begins
+
+\########################################################################
+
+## Start of four estuary analysis
+
+### 1. Load data!
+
+```{r}
+combined_data <- read_excel("four_ndvi_inc.xlsx")
+
+
+```
+
+### 2. Prep data!
+
+```{r}
+combined_data <- combined_data |>
+  mutate(stationno = as.character(stationno)) |>
+  mutate(raw_total_stems = ifelse(raw_total_stems < 0, 0, raw_total_stems))
+
+```
+
+### 3. Preliminary graphs!
+
+```{r}
+## first three by station, second three by tide!
+ggplot(combined_data) +
+  aes(NDVI, veg_cov_pct, colour = stationno) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+
+ggplot(combined_data) +
+  aes(NDVI, meanCGht, colour = stationno) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+
+ggplot(combined_data) +
+  aes(NDVI, maxCGht, colour = stationno) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+
+#####
+
+ggplot(combined_data) +
+  aes(NDVI, veg_cov_pct, colour = tide) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+
+ggplot(combined_data) +
+  aes(NDVI, meanCGht, colour = tide) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+
+ggplot(combined_data) +
+  aes(NDVI, maxCGht, colour = tide) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+```
+
+Mean and max cordgrass height (figures 5 and 6) look like there might be something interesting there. here's hoping!
+
+### 4. Check for normality!
+
+Plots for vegetation cover percentage
+
+```{r}
+combo_model1 <- lm(veg_cov_pct ~ NDVI, data = combined_data)
+combo_model2 <- aov(veg_cov_pct ~ NDVI, data = combined_data)
+
+residuals_1 <- residuals(combo_model2)
+
+#normie test
+shapiro.test(residuals_1)
+
+
+plot(combo_model1, which = 1)
+plot(combo_model1, which = 2)
+
+anova(combo_model1)
+```
+
+Coverage percentage is significant! What about cordgrass coverage?
+
+```{r}
+combo_model3 <- lm(estimatedcover ~ NDVI, data = combined_data)
+combo_model4 <- aov(estimatedcover ~ NDVI, data = combined_data)
+
+residuals_2 <- residuals(combo_model4)
+
+#normie test
+shapiro.test(residuals_2)
+
+
+plot(combo_model3, which = 1)
+plot(combo_model3, which = 2)
+
+anova(combo_model3)
+```
+
+Plots for max cordgrass height
+
+```{r}
+combo_model5 <- lm(maxCGht ~ NDVI, data = combined_data)
+combo_model6 <- aov(maxCGht ~ NDVI, data = combined_data)
+
+residuals_3 <- residuals(combo_model6)
+
+#normie test
+shapiro.test(residuals_3)
+
+plot(combo_model5, which = 1)
+plot(combo_model5, which = 2)
+
+anova(combo_model5)
+```
+
+Plots for mean cordgrass height
+
+```{r}
+combo_model7 <- lm(meanCGht ~ NDVI, data = combined_data)
+combo_model8 <- aov(meanCGht ~ NDVI, data = combined_data)
+
+residuals_4 <- residuals(combo_model8)
+
+#normie test
+shapiro.test(residuals_4)
+
+
+plot(combo_model7, which = 1)
+plot(combo_model7, which = 2)
+
+anova(combo_model7)
+```
+
+Plots for total stems
+
+```{r}
+combo_model9 <- lm(raw_total_stems ~ NDVI, data = combined_data)
+combo_model10 <- aov(raw_total_stems ~ NDVI, data = combined_data)
+
+residuals_5 <- residuals(combo_model10)
+
+#normie test
+shapiro.test(residuals_5)
+
+
+plot(combo_model9, which = 1)
+plot(combo_model9, which = 2)
+
+anova(combo_model7)
+```
+
+### 5. Let's try some bigger linear models!
+
+```{r}
+library(lme4)
+library(lmerTest)
+library(MuMIn)
+library(cAIC4)
+```
+
+```{r}
+lmer_model1 <- lmer(NDVI ~ maxCGht + raw_total_stems + (1|estuary), data = combined_data)
+summary(lmer_model1)
+```
+
+```{r}
+lmer_model3 <- lmer(NDVI ~ maxCGht * raw_total_stems + (1|estuary), data = combined_data)
+summary(lmer_model3)
+```
+
+```{r}
+lmer_model2 <- lmer(NDVI ~ maxCGht + raw_total_stems + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model2)
+```
+
+```{r}
+lmer_model4 <- lmer(NDVI ~ maxCGht * raw_total_stems + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model4)
+```
+
+```{r}
+lmer_model5 <- lmer(NDVI ~ maxCGht + raw_total_stems + stem_density + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model5)
+```
+
+```{r}
+lmer_model6 <- lmer(NDVI ~ maxCGht * raw_total_stems * stem_density + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model6)
+```
+
+```{r}
+lmer_model7 <- lmer(NDVI ~ maxCGht * raw_total_stems + stem_density + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model7)
+```
+
+```{r}
+lmer_model8 <- lmer(NDVI ~ maxCGht + raw_total_stems + estimatedcover + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model8)
+```
+
+```{r}
+lmer_model9 <- lmer(NDVI ~ maxCGht * raw_total_stems * stem_density * estimatedcover + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model9)
+```
+
+```{r}
+lmer_model10 <- lmer(NDVI ~ maxCGht * raw_total_stems * estimatedcover + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model10)
+```
+
+```{r}
+lmer_model11 <- lmer(NDVI ~ maxCGht + raw_total_stems + stem_density + estimatedcover + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model11)
+```
+
+```{r}
+lmer_model12 <- lmer(NDVI ~ estimatedcover + raw_total_stems + (1|estuary), data = combined_data)
+summary(lmer_model12)
+```
+
+```{r}
+lmer_model13 <- lmer(NDVI ~ estimatedcover * raw_total_stems + (1|estuary), data = combined_data)
+summary(lmer_model13)
+```
+
+```{r}
+lmer_model14 <- lmer(NDVI ~ estimatedcover + raw_total_stems + (1|tide) + (1|estuary), data = combined_data)
+summary(lmer_model14)
+```
+
+#### 5.a) cAIC comparison!
+
+```{r}
+#AIC comparison
+AIC1 <- cAIC(lmer_model1)
+AIC2 <- cAIC(lmer_model2)
+AIC3 <- cAIC(lmer_model3)
+AIC4 <- cAIC(lmer_model4)
+AIC5 <- cAIC(lmer_model5)
+AIC6 <- cAIC(lmer_model6)
+AIC7 <- cAIC(lmer_model7)
+AIC8 <- cAIC(lmer_model8)
+AIC9 <- cAIC(lmer_model9)
+AIC10 <- cAIC(lmer_model10)
+AIC11 <- cAIC(lmer_model11)
+AIC12 <- cAIC(lmer_model12)
+AIC13 <- cAIC(lmer_model13)
+AIC14 <- cAIC(lmer_model14)
+
+AIC1
+AIC2
+AIC3
+AIC4
+AIC5
+AIC6
+AIC7
+AIC8
+AIC9
+AIC10
+AIC11
+AIC12
+AIC13
+AIC14
+```
+
+```{r}
+models_list <- c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14")
+caic <- c(172.78, 180.04, 172.55,  180.04, 181.15, 183.41, 180.93, 178.02, 169.12, 177.39, 179.68, 168.20, 166.30, 176.66)
+caic_data <- data.frame(models = models_list, cAIC = caic)
+caic_data$models <- factor(caic_data$models, levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"))
+
+lmer_plot <- ggplot(caic_data, aes(x = models, y = cAIC)) +
+  geom_bar(stat = "identity", fill = "chocolate", width = 0.5) +
+  geom_text(aes(label = cAIC), vjust = -0.5, size = 3)
+
+lmer_plot
+
+
+##showing these three due to their lower cAIC values
+ggpubr::ggqqplot(residuals(lmer_model9))
+ggpubr::ggqqplot(residuals(lmer_model12))
+ggpubr::ggqqplot(residuals(lmer_model13))
+
+#it seems that model 12 might be a slightly better fit?
+
+
+
+plot_model(lmer_model9) + geom_hline(aes(yintercept = 0), linetype = "dotted")
+
+plot_model(lmer_model12) + geom_hline(aes(yintercept = 0), linetype = "dotted")
+
+plot_model(lmer_model13) + geom_hline(aes(yintercept = 0), linetype = "dotted")
+```
+
+### 6. GLM time!
+
+```{r}
+glm_1 <- glm(raw_total_stems ~ NDVI, data = combined_data, family = "poisson")
+summary(glm_1)
+```
+
+```{r}
+predicted_count <- predict(glm_1, type = "response")
+glm_plot <- data.frame(observed = combined_data$raw_total_stems, predicted = predicted_count, NDVI = combined_data$NDVI)
+
+glm_plot |>
+  ggplot(aes(x = NDVI, y = observed)) +
+  geom_point(color = "cornflowerblue", alpha = 0.5) +
+  geom_smooth(method = "glm", method.args = list(family = "poisson"), aes(y = predicted), color = "red4", se = FALSE) +
+  labs(y = "total stems")
+
+glm_plot
+  
+```
+
+In my completely professional opinion, it seems that the total \# of stems decreases slightly as NDVI increases because of the transect proximity to water. Values around 0.05 to 0.2 usually indicate bare ground, while -1 to 0 usually correspond to sandy areas.
