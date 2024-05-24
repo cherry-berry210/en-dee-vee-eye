@@ -1,0 +1,153 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+library(scales)
+library(sjPlot)
+library(lmerTest)
+library(grateful)
+library(rtide)
+library(weathermetrics)
+```
+
+## dawg what the FUCK am i doing with this project
+
+```{r}
+library(readxl)
+cleaning_sheet <- read_excel("four_ndvi_inc.xlsx")
+
+
+cleaning_sheet <- cleaning_sheet |>
+  mutate(raw_total_stems = case_when(raw_total_stems < 0 ~ 0, TRUE ~ raw_total_stems)) |>
+  mutate(cordgrass_density = (raw_total_stems * 100) / estimatedcover) |>
+  mutate(cordgrass_density = case_when(cordgrass_density == 1 & raw_total_stems != 1 ~ 0, TRUE ~ cordgrass_density)) |> #
+  mutate(cordgrass_density = case_when(cordgrass_density < 0 ~ 0, TRUE ~ cordgrass_density)) |> # sets negative densities to 0
+  mutate(cordgrass_density = case_when(cordgrass_density > 0 & raw_total_stems == 0 ~ 0, TRUE ~ cordgrass_density)) #will set density records to 0 if stem total is 0
+
+cleaning_sheet <- cleaning_sheet |>
+  mutate(stationid = case_when(estuary == "Newport Bay" ~ "LosAngeles", TRUE ~ "LaJolla"))
+
+
+#FourEstuaries |> write_csv(file = "cleaned_cord_data.csv")
+
+
+```
+
+## Tide data viewing/cleaning chunks
+
+#### Load CSV files
+
+```{r}
+LJ_Station <- read.csv("LaJolla_Tide_Aerial2022.csv")
+LA_Station <- read.csv("LosAngeles_Tide_Aerial2022.csv")
+
+LJ_Station <- LJ_Station |>
+  mutate(stationid = "LaJolla")
+
+LA_Station <- LA_Station |>
+  mutate(stationid = "LosAngeles") |>
+  rename(verified_ft = verified_.ft)
+```
+
+```{r}
+cleaning_sheet
+tide_data
+```
+
+#### Editing chunk
+
+```{r}
+tide_data <- merge(LJ_Station, LA_Station, all = TRUE)
+
+tide_data <- tide_data |>
+  group_by(date) |>
+  mutate(tide_ht = mean(verified_ft)) |>
+  slice_head(n = 1) |>
+  ungroup() |>
+  select(stationid, tide_ht)
+
+full_cordgrass <- full_join(cleaning_sheet, tide_data)
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Next Section
+
+```{r}
+names(metadata)
+
+
+unique(metadata$projectid)
+
+
+metadata |> filter(projectid == "Bight-Estuary-23")
+```
+
+```{r}
+cordgrass |>  names()
+
+cordgrass$method |> unique()
+
+cordgrass |> 
+  filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate) |> 
+  distinct() |> 
+  group_by(stationno, transectreplicate) |> 
+  count()
+
+
+vegetation_data_2023 <- read_excel("vegetation-data-2023.xlsx", 
+    sheet = "tbl_vegetativecover_data")
+
+
+
+```
+
+```{r}
+vegetation_data_2023 |> 
+  filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate) |> 
+  distinct() |> 
+  group_by(stationno, transectreplicate) |> 
+  count()
+```
+
+```{r}
+cordgrass |> filter(estuaryname == "Newport Bay") |> 
+  group_by(stationno, transectreplicate, plotreplicate) |> 
+  summarize(
+    total_stems = mean(total_stems, na.rm = TRUE),
+    avg_ht = mean(plantheight_cm, na.rm = TRUE)
+  ) |> 
+  full_join(GPS_4_ALL) |> 
+  mutate(total_stems = case_when(
+    is.na(total_stems) == TRUE ~ 0,
+    is.na(total_stems) == FALSE ~ total_stems
+  ),avg_ht = case_when(
+    is.na(avg_ht) == TRUE ~ 0,
+    is.na(avg_ht) == FALSE ~ avg_ht
+  ))
+
+
+vegetation_data_2023 |> filter(estuaryname == "Newport Bay" & scientificname == "Spartina foliosa" & live_dead == "Live") |> 
+  group_by(stationno, transectreplicate) |> 
+count()
+
+
+
+vegetation_data_2023 |> filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate, ) |> 
+  distinct()
+
+
+GPS_4_ALL <- metadata |> filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate, latitude, longitude) |> 
+  distinct()
+
+```

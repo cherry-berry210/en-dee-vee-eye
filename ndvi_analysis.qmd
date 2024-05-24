@@ -34,6 +34,8 @@ library(scales)
 library(sjPlot)
 library(lmerTest)
 library(grateful)
+library(rtide)
+library(weathermetrics)
 ```
 
 Import excel sheet
@@ -57,6 +59,14 @@ cord_data
 ```{r}
 ggplot(cord_data) +
   aes(NDVI, VegetatedCover, colour = Tide) +
+  geom_point() +
+  scale_color_manual(values = c("green", "red2", "darkorange")) +
+  theme_grey(base_size = 14)
+```
+
+```{r}
+ggplot(cord_data) +
+  aes(NDVI, VegetatedCover, colour = Habitat) +
   geom_point() +
   scale_color_manual(values = c("green", "red2", "darkorange")) +
   theme_grey(base_size = 14)
@@ -168,6 +178,13 @@ ggplot(combined_data) +
   geom_point() +
   scale_color_manual(values = c("green", "red2", "darkorange")) +
   theme_grey(base_size = 14)
+
+
+ggplot(combined_data) +
+  aes(x = stem_density) +
+  geom_histogram()
+
+
 ```
 
 Mean and max cordgrass height (figures 5 and 6) look like there might be something interesting there. here's hoping!

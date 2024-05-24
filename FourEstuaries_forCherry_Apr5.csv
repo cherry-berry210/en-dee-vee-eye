@@ -1,0 +1,109 @@
+estuaryname,stationno,samplecollectiondate,habitat,transectreplicate,plotreplicate,covertype,scientificname,estimatedcover,percentcovercode,tallestplantheight_cm,area_m2,meanCGht,maxCGht,raw_total_stems,maybe_stem_density,vegetated_cover,latitude,longitude,tide
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,1,1,76,NA,76,76,NA,NA,86,30.452063,-116.026542,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Low marsh,3,3,vegetation,Spartina foliosa,3,2,64,NA,64,64,NA,NA,41,30.452008,-116.026572,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Low marsh,3,5,vegetation,Spartina foliosa,3,2,78,NA,78,78,NA,NA,90,30.451919,-116.025645,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Low marsh,3,6,vegetation,Spartina foliosa,2,2,96,NA,96,96,NA,NA,64,30.451876,-116.026657,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Mid marsh,2,1,vegetation,Spartina foliosa,5,2,53,NA,53,53,NA,NA,77,30.452201,-116.029008,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Mid marsh,2,2,vegetation,Spartina foliosa,5,2,33,NA,33,33,NA,NA,54,30.452145,-116.02841,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Mid marsh,2,3,vegetation,Spartina foliosa,5,2,45,NA,45,45,NA,NA,69,30.452105,-116.02898,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Mid marsh,2,4,vegetation,Spartina foliosa,2,2,-88,NA,0,0,NA,NA,41,30.45253,-116.028463,mid
+Bahia de San Quintin,1,2023-10-26T00:00:00Z,Mid marsh,2,6,vegetation,Spartina foliosa,1,1,37,NA,37,37,NA,NA,65,30.452857,-116.026283,mid
+Bahia de San Quintin,2,2023-10-27T00:00:00Z,High marsh,3,6,vegetation,Spartina foliosa,60,5,83,NA,83,83,NA,NA,70,30.46602,-115.97537,mid
+Bahia de San Quintin,3,2023-10-29T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,5,2,-88,NA,82,82,NA,NA,70,30.510324,-115.994371,mid
+Bahia de San Quintin,3,2023-10-29T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,60,5,82,NA,82,82,NA,NA,70,30.510324,-115.994371,mid
+Bahia de San Quintin,3,2023-10-29T00:00:00Z,Low marsh,3,3,vegetation,Spartina foliosa,15,3,57,NA,57,57,NA,NA,90,30.510284,-115.994393,mid
+Bahia de San Quintin,3,2023-10-29T00:00:00Z,Low marsh,3,4,vegetation,Spartina foliosa,5,2,59,NA,59,59,NA,NA,50,30.510236,-115.994413,mid
+Bahia de San Quintin,3,2023-10-29T00:00:00Z,Low marsh,3,6,vegetation,Spartina foliosa,5,2,-88,NA,58,58,NA,NA,75,30.510199,-115.99446,mid
+Bahia de San Quintin,3,2023-10-29T00:00:00Z,Low marsh,3,6,vegetation,Spartina foliosa,30,4,58,NA,58,58,NA,NA,75,30.510199,-115.99446,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,2,vegetation,Spartina foliosa,5,2,-88,NA,88,88,NA,NA,40,30.441532,-115.941496,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,2,vegetation,Spartina foliosa,33,4,88,NA,88,88,NA,NA,40,30.441532,-115.941496,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,3,vegetation,Spartina foliosa,15,3,-88,NA,74,74,NA,NA,50,30.441531,-115.44154,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,3,vegetation,Spartina foliosa,27,4,74,NA,74,74,NA,NA,50,30.441531,-115.44154,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,4,vegetation,Spartina foliosa,3,2,77,NA,77,77,NA,NA,25,30.4415281,-115.941585,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,5,vegetation,Spartina foliosa,16,3,-88,NA,60,60,NA,NA,40,30.441526,-115.94164,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,5,vegetation,Spartina foliosa,27,4,60,NA,60,60,NA,NA,40,30.441526,-115.94164,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,6,vegetation,Spartina foliosa,10,3,-88,NA,56,56,NA,NA,60,30.44151,-115.941691,mid
+Bahia de San Quintin,4,2023-10-28T00:00:00Z,Mid marsh,3,6,vegetation,Spartina foliosa,15,3,56,NA,56,56,NA,NA,60,30.44151,-115.941691,mid
+San Elijo Lagoon,1,2023-11-22T00:00:00Z,Low marsh,2,1,vegetation,Spartina foliosa,10,3,76,1,51,76,22,22,80,33.010081,-117.277711,low
+San Elijo Lagoon,1,2023-11-22T00:00:00Z,Low marsh,2,5,vegetation,Spartina foliosa,2,2,74,1,74,74,1,1,100,33.01009,-117.27793,low
+San Elijo Lagoon,1,2023-11-22T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,60,5,116,1,51.699999999999996,116,16,16,60,33.010813,-117.278372,low
+San Elijo Lagoon,1,2023-11-22T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,2,2,54,1,54,54,1,1,60,33.010843,-117.278395,low
+San Elijo Lagoon,2,2023-11-22T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,25,3,100,1,66.2,90,14,14,85,33.011975,-117.274898,low
+San Elijo Lagoon,2,2023-11-22T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,25,3,95,0.6207,60.42857142857143,82,7,11.277589817947478,75,33.009921,-117.273651,low
+San Elijo Lagoon,2,2023-11-22T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,25,3,121,0.6207,66.5,114,14,22.555179635894955,50,33.009868,-117.273647,low
+San Elijo Lagoon,2,2023-11-22T00:00:00Z,Low marsh,3,3,vegetation,Spartina foliosa,25,3,121,0.6207,89.7,112,13,20.944095376188173,95,33.009839,-117.273646,low
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,3,2,60,NA,30,60,0.5,NA,65,33.012416,-117.260524,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,2,vegetation,Spartina foliosa,2,2,105,1,105,105,1,1,70,33.013379,-117.259351,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,2,vegetation,Spartina foliosa,2,2,105,NA,0,0,0,NA,70,33.013379,-117.259351,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,3,vegetation,Spartina foliosa,2,2,110,1,110,110,1,1,80,33.013402,-117.259294,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,3,vegetation,Spartina foliosa,2,2,110,NA,0,0,0,NA,80,33.013402,-117.259294,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,5,vegetation,Spartina foliosa,25,3,118,0.6207,108.42857142857143,118,7,11.277589817947478,80,33.013436,-117.259214,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,5,vegetation,Spartina foliosa,25,3,118,NA,0,0,0,NA,80,33.013436,-117.259214,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,6,vegetation,Spartina foliosa,20,3,124,1,114.88888888888889,123,9,9,98,33.013457,-117.259157,high
+San Elijo Lagoon,3,2023-12-14T00:00:00Z,Low marsh,2,6,vegetation,Spartina foliosa,20,3,124,NA,0,0,0,NA,98,33.013457,-117.259157,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,1,2,vegetation,Spartina foliosa,20,3,102,0.096211,40.57142857142858,91,14,145.51350677157498,25,33.08939915,-117.30619482,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,1,3,vegetation,Spartina foliosa,60,5,110,0.096211,42.79999999999999,107,20,207.8764382451071,60,33.08939314,-117.30614228,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,1,4,vegetation,Spartina foliosa,5,2,32,0.096211,20.5,38,14,145.51350677157498,15,33.08939307,-117.30609155,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,1,4,vegetation,Spartina foliosa,10,3,67,0.096211,20.5,38,14,145.51350677157498,15,33.08939307,-117.30609155,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,2,2,vegetation,Spartina foliosa,20,3,102,0.096211,46.4,89,10,103.93821912255355,75,33.08948854,-117.30618665,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,2,3,vegetation,Spartina foliosa,45,4,107,0.096211,36.05263157894736,84,19,197.48261633285173,45,33.08947863,-117.3061357,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,2,4,vegetation,Spartina foliosa,2,2,55,0.096211,57.642857142857146,107,14,145.51350677157498,40,33.08946872,-117.30608636,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,2,4,vegetation,Spartina foliosa,40,4,100,0.096211,57.642857142857146,107,14,145.51350677157498,40,33.08946872,-117.30608636,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,2,5,vegetation,Spartina foliosa,45,4,111,0.096211,67.25,107,12,124.72586294706426,45,33.08945663,-117.3060327,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,3,4,vegetation,Spartina foliosa,40,4,107,0.096211,45.875,98,16,166.30115059608568,40,33.08970603,-117.30608571,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,3,5,vegetation,Spartina foliosa,2,2,36,0.096211,21.615384615384613,99,26,270.23936971863924,60,33.08968981,-117.30604768,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,3,5,vegetation,Spartina foliosa,60,5,100,0.096211,21.615384615384613,99,26,270.23936971863924,60,33.08968981,-117.30604768,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,3,6,vegetation,Spartina foliosa,2,2,51,0.096211,39.95000000000001,97,20,207.8764382451071,60,33.08967537,-117.30600777,high
+Batiquitos Lagoon,1,2023-10-02T00:00:00Z,Low marsh,3,6,vegetation,Spartina foliosa,60,5,109,0.096211,39.95000000000001,97,20,207.8764382451071,60,33.08967537,-117.30600777,high
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,2,2,29,0.096211,49.5,110,20,207.8764382451071,75,33.0906322,-117.29544314,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,60,5,101,0.096211,49.5,110,20,207.8764382451071,75,33.0906322,-117.29544314,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,1,2,vegetation,Spartina foliosa,5,2,54,0.096211,46.375,75,16,166.30115059608568,60,33.09080829,-117.29543677,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,1,2,vegetation,Spartina foliosa,30,4,82,0.096211,46.375,75,16,166.30115059608568,60,33.09080829,-117.29543677,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,2,1,vegetation,Spartina foliosa,2,2,41,0.096211,51,56,5,51.969109561276774,80,33.09064747,-117.29597483,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,2,1,vegetation,Spartina foliosa,20,3,54,0.096211,51,56,5,51.969109561276774,80,33.09064747,-117.29597483,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,2,2,vegetation,Spartina foliosa,1,1,50,0.096211,46.294117647058826,72,17,176.69497250834104,80,33.09073157,-117.29595047,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,2,2,vegetation,Spartina foliosa,35,4,69,0.096211,46.294117647058826,72,17,176.69497250834104,80,33.09073157,-117.29595047,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,5,2,26,0.096211,76.83333333333333,85,6,62.36293147353213,30,33.09117431,-117.29745021,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,30,4,84,0.096211,76.83333333333333,85,6,62.36293147353213,30,33.09117431,-117.29745021,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,5,2,32,0.096211,73.66666666666666,105,18,187.0887944205964,60,33.09122079,-117.29744404,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,60,5,105,0.096211,73.66666666666666,105,18,187.0887944205964,60,33.09122079,-117.29744404,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,3,3,vegetation,Spartina foliosa,2,2,44,0.096211,56.173913043478265,80,23,239.05790398187315,75,33.09130875,-117.29742466,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Low marsh,3,3,vegetation,Spartina foliosa,70,5,82,0.096211,56.173913043478265,80,23,239.05790398187315,75,33.09130875,-117.29742466,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Mid marsh,3,4,vegetation,Spartina foliosa,1,1,29,0.096211,32.09090909090909,46,11,114.33204103480891,50,33.09139463,-117.29741608,low
+Batiquitos Lagoon,2,2023-10-01T00:00:00Z,Mid marsh,3,4,vegetation,Spartina foliosa,10,3,67,0.096211,32.09090909090909,46,11,114.33204103480891,50,33.09139463,-117.29741608,low
+Batiquitos Lagoon,3,2023-10-01T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,30,4,69,0.096211,55.142857142857146,69,7,72.75675338578749,75,33.09094943,-117.29082999,high
+Batiquitos Lagoon,3,2023-10-01T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,15,3,90,0.096211,67.875,86,8,83.15057529804284,90,33.09115868,-117.29125612,high
+Batiquitos Lagoon,3,2023-10-01T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,10,3,85,0.096211,73.4,89,15,155.90732868383031,80,33.09122308,-117.29122824,high
+Batiquitos Lagoon,3,2023-10-01T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,80,6,106,0.096211,73.4,89,15,155.90732868383031,80,33.09122308,-117.29122824,high
+Batiquitos Lagoon,3,2023-10-01T00:00:00Z,Mid marsh,3,3,vegetation,Spartina foliosa,10,3,77,0.096211,54.21052631578947,104,19,197.48261633285173,30,33.09130861,-117.29121037,high
+Batiquitos Lagoon,3,2023-10-01T00:00:00Z,Mid marsh,3,3,vegetation,Spartina foliosa,20,3,126,0.096211,54.21052631578947,104,19,197.48261633285173,30,33.09130861,-117.29121037,high
+Newport Bay,1,2023-09-15T00:00:00Z,Low marsh,2,1,vegetation,Spartina foliosa,0.02,1,11,0.0962113,16.666666666666668,20,3,31.18136850868869,40,33.62236479,-117.89165433,mid
+Newport Bay,1,2023-09-15T00:00:00Z,Mid marsh,1,1,vegetation,Spartina foliosa,0.15,1,79,0.0962113,52.6,76,10,103.93789502896229,75,33.62228751,-117.89137628,high
+Newport Bay,1,2023-09-15T00:00:00Z,Mid marsh,1,2,vegetation,Spartina foliosa,0.03,1,28,0.0962113,66,66,1,10.39378950289623,90,33.62225003,-117.89140487,high
+Newport Bay,1,2023-10-16T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,0.05,1,22,0.0962113,23.928571428571427,51,14,145.51305304054722,15,33.62248838,-117.89194964000001,low
+Newport Bay,1,2023-10-16T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,0.1,1,51,0.0962113,23.928571428571427,51,14,145.51305304054722,15,33.62248838,-117.89194964000001,low
+Newport Bay,2,2023-09-15T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,0.2,1,82,0.0962113,90.66666666666667,110,6,62.36273701737738,70,33.63195587,-117.8858834,low
+Newport Bay,2,2023-09-15T00:00:00Z,Low marsh,1,2,vegetation,Spartina foliosa,0.35,1,91,0.0962113,6.066666666666669,91,15,155.90684254344345,50,33.63197215,-117.88583271,low
+Newport Bay,2,2023-09-15T00:00:00Z,Low marsh,1,3,vegetation,Spartina foliosa,0.1,1,106,0.0962113,77.6,106,15,155.90684254344345,100,33.63197892,-117.88577308,low
+Newport Bay,2,2023-09-15T00:00:00Z,Low marsh,2,1,vegetation,Spartina foliosa,0.4,1,66,0.0962113,45.666666666666664,66,15,155.90684254344345,40,33.63205,-117.88551,low
+Newport Bay,2,2023-09-15T00:00:00Z,Mid marsh,1,4,vegetation,Spartina foliosa,0.01,1,60,0.0962113,60,60,1,10.39378950289623,95,33.63198127,-117.88571913,low
+Newport Bay,2,2023-09-15T00:00:00Z,Mid marsh,1,6,vegetation,Spartina foliosa,0.1,1,70,NA,NA,NA,NA,NA,90,33.63205569,-117.88554953,low
+Newport Bay,2,2023-09-15T00:00:00Z,Mid marsh,2,2,vegetation,Spartina foliosa,0.05,1,68,NA,NA,NA,NA,NA,85,33.63208,-117.88549,low
+Newport Bay,2,2023-09-16T00:00:00Z,Brackish marsh,3,1,vegetation,Spartina foliosa,0.1,1,84,0.0962113,71.8,84,5,51.968947514481144,85,33.63231877,-117.88496401,low
+Newport Bay,3,2023-09-16T00:00:00Z,Low marsh,1,1,vegetation,Spartina foliosa,0.05,1,86,0.0962113,64.4375,86,8,83.15031602316984,98,33.64643,-117.88326,high
+Newport Bay,3,2023-09-16T00:00:00Z,Low marsh,1,2,vegetation,Spartina foliosa,0.25,1,71.5,0.0962113,39.29166666666667,71.5,12,124.72547403475475,45,33.64639,-117.88319,high
+Newport Bay,3,2023-09-16T00:00:00Z,Low marsh,1,3,vegetation,Spartina foliosa,0.25,1,95,0.0962113,58.88461538461539,95,13,135.119263537651,80,33.64635,-117.88311,high
+Newport Bay,3,2023-09-16T00:00:00Z,Low marsh,1,5,vegetation,Spartina foliosa,0.5,1,92,0.0962113,73.2625,92,40,415.75158011584915,85,33.64628,-117.88294,high
+Newport Bay,3,2023-09-16T00:00:00Z,Mid marsh,1,4,vegetation,Spartina foliosa,0.03,1,87,NA,NA,NA,NA,NA,95,33.64633,-117.88302,high
+Newport Bay,3,2023-09-16T00:00:00Z,Mid marsh,1,6,vegetation,Spartina foliosa,0.3,1,98.5,NA,NA,NA,NA,NA,90,33.64623,-117.88287,high
+Newport Bay,3,2023-09-16T00:00:00Z,Mid marsh,2,2,vegetation,Spartina foliosa,0.05,1,85,NA,NA,NA,NA,NA,95,33.645858,-117.882635,mid
+Newport Bay,3,2023-09-16T00:00:00Z,Mid marsh,2,4,vegetation,Spartina foliosa,0.05,1,43,0.0962113,34.5,40,2,20.78757900579246,70,33.645991,-117.882544,mid
+Newport Bay,3,2023-09-16T00:00:00Z,Mid marsh,2,5,vegetation,Spartina foliosa,0.2,1,70,0.0962113,57.142857142857146,62,7,72.75652652027361,90,33.646031,-117.882465,mid
+Newport Bay,3,2023-09-16T00:00:00Z,Mid marsh,2,6,vegetation,Spartina foliosa,0.3,1,110,0.0962113,77,95,8,83.15031602316984,75,33.64597,-117.883155,mid
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,0.05,1,81,0.0962113,44.666666666666664,68,6,62.36273701737738,25,33.64567514,-117.88265196,low
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,1,vegetation,Spartina foliosa,0.25,1,60,0.0962113,44.666666666666664,68,6,62.36273701737738,25,33.64567514,-117.88265196,low
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,0.1,1,91,0.0962113,48.25,60,4,41.57515801158492,40,33.6456732,-117.88260838,low
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,2,vegetation,Spartina foliosa,0.25,1,68,0.0962113,48.25,60,4,41.57515801158492,40,33.6456732,-117.88260838,low
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,3,vegetation,Spartina foliosa,0.25,1,102,0.0962113,78,92,4,41.57515801158492,85,33.64566158,-117.88255633,low
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,4,vegetation,Spartina foliosa,0.4,1,86,0.0962113,58.75,80,12,124.72547403475475,85,33.64564617,-117.88251162,low
+Newport Bay,3,2023-10-16T00:00:00Z,Low marsh,3,5,vegetation,Spartina foliosa,0.25,1,90,0.0962113,51.57142857142857,77,7,72.75652652027361,40,33.64563437,-117.88246306,low
