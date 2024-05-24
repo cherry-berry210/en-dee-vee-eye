@@ -16,7 +16,9 @@ library(rtide)
 library(weathermetrics)
 ```
 
-## dawg what the FUCK am i doing with this project
+## dawg what the flip flop was i doing with this project
+
+##### It has been like 2 months send help
 
 ```{r}
 library(readxl)
@@ -34,7 +36,7 @@ cleaning_sheet <- cleaning_sheet |>
   mutate(stationid = case_when(estuary == "Newport Bay" ~ "LosAngeles", TRUE ~ "LaJolla"))
 
 
-#FourEstuaries |> write_csv(file = "cleaned_cord_data.csv")
+cleaning_sheet |> write_csv(file = "notide_cordgrass_data.csv")
 
 
 ```
@@ -75,7 +77,13 @@ tide_data <- tide_data |>
 full_cordgrass <- full_join(cleaning_sheet, tide_data)
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+Cherry's work \^
+
+------------------------------------------------------------------------------------------
+
+Amy's work v
 
 ## Next Section
 
