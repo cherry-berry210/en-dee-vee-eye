@@ -25,6 +25,7 @@ dawg what the flip flop was i doing with this project
 It has been like 2 months send help
 
 #### Amy help chunk here
+
 ```{r}
 library(readxl)
 
@@ -40,9 +41,8 @@ Temporary <- FourEstuaries_forCherry_new %>%
   left_join(select(cleaning_sheet, estuaryname, stationno, transectreplicate, plotreplicate, NDVI))
 ```
 
-
-
 #Research Questions
+
 ```{r}
 Temporary
 ```
@@ -52,24 +52,14 @@ Temporary
 ```{r}
 Temporary %>% ggplot(aes(x = estimatedcover, y = NDVI, color= habitat)) + geom_point()
 ```
+
 ```{r}
 Temporary %>% ggplot(aes(x = vegetated_cover, y = NDVI, color = habitat)) + geom_point()
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 HOPEFULLY DON'T NEED THIS CHUNK ANYMORE THANKS TO UPSTREAM DATA CLEANING
+
 ```{r}
 cleaning_sheet <- cleaning_sheet |>
   mutate(raw_total_stems = case_when(raw_total_stems < 0 ~ 0, TRUE ~ raw_total_stems)) |>
