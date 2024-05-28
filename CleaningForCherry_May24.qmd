@@ -1,0 +1,164 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+
+
+```
+
+```{r}
+library(readxl)
+metadata <- read_excel("vegetation-data-2023.xlsx", sheet = 1)
+
+
+vegcoverdata <- read_excel("vegetation-data-2023.xlsx", sheet = 2)
+
+
+cordgrass <- read_excel("vegetation-data-2023.xlsx", sheet = 4)
+
+View(metadata)
+
+
+
+Part1 <- metadata |> 
+    mutate(across(where(is.character), ~na_if(.,"-88")),
+           across(where(is.numeric), ~na_if(.,-88))) %>% 
+  select(estuaryname, stationno, samplecollectiondate, transectreplicate, plotreplicate, habitat, vegetated_cover)
+
+Part2 <- cordgrass |> 
+    mutate(across(where(is.character), ~na_if(.,"-88")),
+           across(where(is.numeric), ~na_if(.,-88))) %>% 
+
+  select(estuaryname, stationno, samplecollectiondate, 
+         transectreplicate, plotreplicate, live_dead, total_stems, 
+         plantheight_replicate, plantheight_cm, area_m2) |> 
+  
+  mutate(
+    plantheight_cm = case_when(
+      plantheight_cm == -88 ~ 0, 
+      is.numeric(plantheight_cm) == TRUE ~ plantheight_cm),
+    total_stems = as.numeric(total_stems),
+    area_m2 = as.numeric(area_m2)) |> 
+  
+  group_by(estuaryname, stationno, samplecollectiondate, 
+            transectreplicate, plotreplicate) |> 
+  summarize(meanCGht =mean(plantheight_cm, na.rm = TRUE),
+            maxCGht = max(plantheight_cm, na.rm = TRUE),
+            raw_total_stems = mean(total_stems, na.rm = TRUE),
+            maybe_stem_density = mean(total_stems/area_m2, na.rm = TRUE)
+            ) %>% 
+   mutate(across(where(is.character), ~na_if(.,"-Inf")),
+           across(where(is.numeric), ~na_if(.,-Inf))) %>% 
+   mutate(across(where(is.character), ~na_if(.,"NaN")),
+           across(where(is.numeric), ~na_if(.,NaN)))
+
+Part3 <- vegcoverdata |> 
+    mutate(across(where(is.character), ~na_if(.,"-88")),
+           across(where(is.numeric), ~na_if(.,-88))) %>% 
+    filter(scientificname == "Spartina foliosa") %>% 
+  filter(live_dead == "Live") %>% 
+
+  select(estuaryname, stationno, samplecollectiondate, 
+         transectreplicate, plotreplicate, covertype, scientificname, 
+         estimatedcover, percentcovercode, tallestplantheight_cm) %>% 
+  mutate(estimatedcover = case_when(
+    estuaryname == "Newport Bay" ~ estimatedcover * 100,
+    is.character(estuaryname) == TRUE ~ estimatedcover
+  ))
+
+temp <- Part2$estuaryname |> unique()
+
+vegcoverdata$scientificname |> unique()
+
+FourEstuaries <- left_join(Part1, Part2) |> left_join(Part3) |> filter(estuaryname %in% temp[c(1,3:5)]) %>% 
+  mutate(estimatedcover = replace_na(estimatedcover, 0),
+         raw_total_stems = replace_na(raw_total_stems, 0),
+         maybe_stem_density = replace_na(maybe_stem_density, 0)) %>% 
+  left_join(select(metadata, estuaryname, stationno, transectreplicate, plotreplicate, latitude, longitude))
+
+FourEstuaries |> View()
+
+FourEstuaries |> group_by(estuaryname, stationno, samplecollectiondate, transectreplicate, plotreplicate, habitat, vegetated_cover)
+
+
+FourEstuaries |> write_csv(file = "FourEstuaries_forCherry_May24.csv")
+
+FourEstuaries %>% arrange(estimatedcover) %>% View()
+```
+
+```{r}
+names(metadata)
+
+
+unique(metadata$projectid)
+
+
+metadata |> filter(projectid == "Bight-Estuary-23")
+```
+
+```{r}
+cordgrass |>  names()
+
+cordgrass$method |> unique()
+
+cordgrass |> 
+  filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate) |> 
+  distinct() |> 
+  group_by(stationno, transectreplicate) |> 
+  count()
+
+
+vegetation_data_2023 <- read_excel("vegetation-data-2023.xlsx", 
+    sheet = "tbl_vegetativecover_data")
+
+
+
+```
+
+```{r}
+vegetation_data_2023 |> 
+  filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate) |> 
+  distinct() |> 
+  group_by(stationno, transectreplicate) |> 
+  count()
+```
+
+```{r}
+cordgrass |> filter(estuaryname == "Newport Bay") |> 
+  group_by(stationno, transectreplicate, plotreplicate) |> 
+  summarize(
+    total_stems = mean(total_stems, na.rm = TRUE),
+    avg_ht = mean(plantheight_cm, na.rm = TRUE)
+  ) |> 
+  full_join(GPS_4_ALL) |> 
+  mutate(total_stems = case_when(
+    is.na(total_stems) == TRUE ~ 0,
+    is.na(total_stems) == FALSE ~ total_stems
+  ),avg_ht = case_when(
+    is.na(avg_ht) == TRUE ~ 0,
+    is.na(avg_ht) == FALSE ~ avg_ht
+  ))
+
+
+vegetation_data_2023 |> filter(estuaryname == "Newport Bay" & scientificname == "Spartina foliosa" & live_dead == "Live") |> 
+  group_by(stationno, transectreplicate) |> 
+count()
+
+
+
+vegetation_data_2023 |> filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate, ) |> 
+  distinct()
+
+
+GPS_4_ALL <- metadata |> filter(estuaryname == "Newport Bay") |> 
+  select(stationno, transectreplicate, plotreplicate, latitude, longitude) |> 
+  distinct()
+
+```

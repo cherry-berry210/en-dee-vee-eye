@@ -4,6 +4,8 @@ format: html
 editor: visual
 ---
 
+### Packages
+
 ```{r}
 library(tidyverse)
 library(dplyr)
@@ -16,29 +18,70 @@ library(rtide)
 library(weathermetrics)
 ```
 
-## dawg what the flip flop was i doing with this project
+### Import Data Cleaning
 
-##### It has been like 2 months send help
+dawg what the flip flop was i doing with this project
 
+It has been like 2 months send help
+
+#### Amy help chunk here
 ```{r}
 library(readxl)
-cleaning_sheet <- read_excel("four_ndvi_inc.xlsx")
+
+### Data from Bight plus NDVI data merged in GIS software; needs tidying maybe
+cleaning_sheet <- read_excel("four_ndvi_inc.xlsx") %>% rename(estuaryname = estuary)
+
+#older more complete data
+FourEstuaries_forCherry_new <- read_csv("FourEstuaries_forCherry_May24.csv") 
+
+names(cleaning_sheet)
+
+Temporary <- FourEstuaries_forCherry_new %>% 
+  left_join(select(cleaning_sheet, estuaryname, stationno, transectreplicate, plotreplicate, NDVI))
+```
 
 
+
+#Research Questions
+```{r}
+Temporary
+```
+
+## Cordgrass pct cover x NDVI
+
+```{r}
+Temporary %>% ggplot(aes(x = estimatedcover, y = NDVI, color= habitat)) + geom_point()
+```
+```{r}
+Temporary %>% ggplot(aes(x = vegetated_cover, y = NDVI, color = habitat)) + geom_point()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+HOPEFULLY DON'T NEED THIS CHUNK ANYMORE THANKS TO UPSTREAM DATA CLEANING
+```{r}
 cleaning_sheet <- cleaning_sheet |>
   mutate(raw_total_stems = case_when(raw_total_stems < 0 ~ 0, TRUE ~ raw_total_stems)) |>
-  mutate(cordgrass_density = (raw_total_stems * 100) / estimatedcover) |>
-  mutate(cordgrass_density = case_when(cordgrass_density == 1 & raw_total_stems != 1 ~ 0, TRUE ~ cordgrass_density)) |> #
-  mutate(cordgrass_density = case_when(cordgrass_density < 0 ~ 0, TRUE ~ cordgrass_density)) |> # sets negative densities to 0
-  mutate(cordgrass_density = case_when(cordgrass_density > 0 & raw_total_stems == 0 ~ 0, TRUE ~ cordgrass_density)) #will set density records to 0 if stem total is 0
+  mutate(stem_density = case_when(stem_density == 1 & raw_total_stems != 1 ~ 0, TRUE ~ stem_density)) |> #
+  mutate(stem_density = case_when(stem_density < 0 ~ 0, TRUE ~ stem_density)) |> # sets negative densities to 0
+  mutate(stem_density = case_when(stem_density > 0 & raw_total_stems == 0 ~ 0, TRUE ~ stem_density)) #will set density records to 0 if stem total is 0
 
 cleaning_sheet <- cleaning_sheet |>
   mutate(stationid = case_when(estuary == "Newport Bay" ~ "LosAngeles", TRUE ~ "LaJolla"))
 
 
 cleaning_sheet |> write_csv(file = "notide_cordgrass_data.csv")
-
-
 ```
 
 ## Tide data viewing/cleaning chunks
@@ -81,9 +124,9 @@ full_cordgrass <- full_join(cleaning_sheet, tide_data)
 
 Cherry's work \^
 
-------------------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
-Amy's work v
+OLD Amy's work, see CleaningForCherry_May24.qmd instead v
 
 ## Next Section
 
