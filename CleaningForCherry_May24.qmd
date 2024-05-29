@@ -6,7 +6,14 @@ editor: visual
 
 ```{r}
 library(tidyverse)
-
+library(dplyr)
+library(readxl)
+library(scales)
+library(sjPlot)
+library(lmerTest)
+library(grateful)
+library(rtide)
+library(weathermetrics)
 
 ```
 
@@ -90,6 +97,8 @@ FourEstuaries |> write_csv(file = "FourEstuaries_forCherry_May24.csv")
 FourEstuaries %>% arrange(estimatedcover) %>% View()
 ```
 
+### Creation of pre-ndvi dataset
+
 ```{r}
 names(metadata)
 
@@ -160,5 +169,54 @@ vegetation_data_2023 |> filter(estuaryname == "Newport Bay") |>
 GPS_4_ALL <- metadata |> filter(estuaryname == "Newport Bay") |> 
   select(stationno, transectreplicate, plotreplicate, latitude, longitude) |> 
   distinct()
+
+```
+
+old work (pre 5/28)
+
+-------------------------------------------------------------------------------------------------
+
+work as of 5/28
+
+### Import ndvi-included datasets
+
+```{r}
+set1 <- read_excel("all_ndvi.xls") #trying out a shortened name
+set0 <- read_excel("all_ndvi_abv0.xls") #abv0 dataset
+```
+
+### cleaning set1 dataset
+
+```{r}
+set1 <- set1 |>
+  rename(ndvi_mean = MEAN_grid_code, ndvi_min = MIN_grid_code, ndvi_max = MAX_grid_code, estuary = estuaryname, ttl_stems = raw_total_stems, vegcov = vegetated_cover, stem_dens = maybe_stem_density, covtype = covertype, cgcov = estimatedcover, maxht = tallestplantheight_cm, pct_covcode = percentcovercode, lat = latitude, long = longitude, OID = OBJECTID, date = samplecollectiondate, tran_rep = transectreplicate, plotnum = plotreplicate, species = scientificname)
+
+set1
+```
+
+EDA?
+
+```{r}
+set1colors <- c("red3", "blue2", "green4", "goldenrod")
+```
+
+```{r}
+ggplot(set1) +
+  geom_col(aes(x = ndvi_mean, y = cgcov, fill = set1colors))
+  #scale_color_manual(values = set1colors)
+```
+
+### cleaning set0 dataset
+
+```{r}
+set0 <- set0 |>
+  rename(ndvi_mean = MEAN_grid_code, ndvi_min = MIN_grid_code, ndvi_max = MAX_grid_code, estuary = estuaryname, ttl_stems = raw_total_stems, vegcov = vegetated_cover, stem_dens = maybe_stem_density, covtype = covertype, cgcov = estimatedcover, maxht = tallestplantheight_cm, pct_covcode = percentcovercode, lat = latitude, long = longitude, OID = OBJECTID, date = samplecollectiondate, tran_rep = transectreplicate, plotnum = plotreplicate, species = scientificname)
+
+set0
+```
+
+EDA?
+
+```{r}
 
 ```
